@@ -2,6 +2,9 @@ package cn.zhixiangsingle.dao.ratplateAlert;
 
 import cn.zhixiangsingle.entity.ratplate.ratplateAlert.dto.RatplateAlertDTO;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * All rights Reserved, Designed By www.zhixiangyun.net
  *
@@ -16,4 +19,8 @@ import cn.zhixiangsingle.entity.ratplate.ratplateAlert.dto.RatplateAlertDTO;
  */
 public interface RatplateAlertMapper {
     Integer insertSelective(RatplateAlertDTO ratplateAlertDTO);
+
+    Integer findRatplateAlertTotal(RatplateAlertDTO ratplateAlertDTO);
+
+    List<Map<String,Object>> findRatplateAlertList(RatplateAlertDTO ratplateAlertDTO);
 }

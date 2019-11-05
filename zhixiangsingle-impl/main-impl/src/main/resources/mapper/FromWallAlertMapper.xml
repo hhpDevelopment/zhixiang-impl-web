@@ -48,22 +48,22 @@
 				f.id,
 			</if>
 			<if test="fromwallArea != null and fromwallArea != ''" >
-				IFNULL(f.fromwall_area,null) fromwallArea,
+				f.fromwall_area fromwallArea,
 			</if>
 			<if test="fromwallSensor != null and fromwallSensor != ''" >
-				IFNULL(f.fromwall_sensor,null) fromwallSensor,
+				f.fromwall_sensor fromwallSensor,
 			</if>
 			<if test="ratplateStartTime != null and ratplateStartTime != ''" >
-				IFNULL(f.ratplate_starttime,null) ratplateStartTime,
+				f.ratplate_starttime ratplateStartTime,
 			</if>
 			<if test="ratplateStatus != null and ratplateStatus != ''" >
-				IFNULL(f.ratplate_status,null) ratplateStatus,
+				f.ratplate_status ratplateStatus,
 			</if>
 			<if test="ratplateDescription != null and ratplateDescription != ''" >
-				IFNULL(f.ratplate_description,null) ratplateDescription,
+				f.ratplate_description ratplateDescription,
 			</if>
 			<if test="ratplateRultionsTime != null and ratplateRultionsTime != ''" >
-				IFNULL(f.ratplate_rultions_time,null) ratplateRultionsTime,
+				f.ratplate_rultions_time ratplateRultionsTime,
 			</if>
 			<if test="sdId != null" >
 				f.sdid sdId,

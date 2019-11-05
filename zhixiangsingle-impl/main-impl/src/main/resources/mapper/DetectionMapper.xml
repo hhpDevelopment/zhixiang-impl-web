@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.zhixiangsingle.dao.detection.DetectionMapper">
+	<sql id="Base_Column_List">
+		id, image_file imageFile, with_mask withMask, with_hat withHat, with_cloth withCloth, with_mouse withMouse,
+		kitchen_id kitchenId, camera_id cameraId, detectiontime detectionTime, stut
+	</sql>
+	<sql id="selectPrintAllKey">
+		<trim suffixOverrides=",">
+			<if test="id != null" >
+				d.id,
+			</if>
+			<if test="imageFile != null and imageFile != ''" >
+				IFNULL(d.image_file,'-') imageFile,
+			</if>
+			<if test="withMask != null and withMask != ''" >
+				IFNULL(d.with_mask,'-') withMask,
+			</if>
+			<if test="withHat != null and withHat != ''" >
+				IFNULL(d.with_hat,'-') withHat,
+			</if>
+			<if test="withCloth != null and withCloth != ''" >
+				IFNULL(d.with_cloth,'-') withCloth,
+			</if>
+			<if test="withMouse != null and withMouse != ''" >
+				IFNULL(d.with_mouse,'-') withMouse,
+			</if>
+			<if test="kitchenId != null and kitchenId != ''" >
+				IFNULL(k.kitchen_name,'-') kitchenName,
+			</if>
+			<if test="cameraId != null and cameraId != ''" >
+				IFNULL(c.camera_name,'-') cameraName,
+			</if>
+			<if test="detectionTime != null and detectionTime != ''" >
+				IFNULL(d.detectiontime,'-') detectionTime,
+			</if>
+			<if test="stut != null and stut != ''" >
+				IFNULL(d.stut,'-') stut,
+			</if>
+			<if test="siteName != null and siteName != ''" >
+				#{siteName} siteName,
+			</if>
+			<if test="sitePhoto != null and sitePhoto != ''" >
+				#{sitePhoto} sitePhoto,
+			</if>
+			<if test="picturePrefix != null and picturePrefix != ''" >
+				#{picturePrefix} picturePrefix,
+			</if>
+		</trim>
+	</sql>
+    <sql id="selectAllKey">
+        <trim suffixOverrides=",">
+			<if test="id != null" >
+				d.id,
+			</if>
+			<if test="imageFile != null and imageFile != ''" >
+				d.image_file imageFile,
+			</if>
+			<if test="withMask != null and withMask != ''" >
+				d.with_mask withMask,
+			</if>
+			<if test="withHat != null and withHat != ''" >
+				d.with_hat withHat,
+			</if>
+			<if test="withCloth != null and withCloth != ''" >
+				d.with_cloth withCloth,
+			</if>
+			<if test="withMouse != null and withMouse != ''" >
+				d.with_mouse withMouse,
+			</if>
+			<if test="kitchenId != null and kitchenId != ''" >
+				k.kitchen_name kitchenName,
+			</if>
+			<if test="cameraId != null and cameraId != ''" >
+				c.camera_name cameraName,
+			</if>
+			<if test="detectionTime != null and detectionTime != ''" >
+				d.detectiontime detectionTime,
+			</if>
+			<if test="stut != null and stut != ''" >
+				d.stut,
+			</if>
+			<if test="siteName != null and siteName != ''" >
+				#{siteName} siteName,
+			</if>
+			<if test="sitePhoto != null and sitePhoto != ''" >
+				#{sitePhoto} sitePhoto,
+			</if>
+			<if test="picturePrefix != null and picturePrefix != ''" >
+				#{picturePrefix} picturePrefix,
+			</if>
+        </trim>
+    </sql>
+	<sql id="insertAllKey">
+		<trim suffixOverrides=",">
+			<if test="imageFile != null and imageFile != ''" >
+				image_file,
+			</if>
+			<if test="withMask != null and withMask != ''" >
+				with_mask,
+			</if>
+			<if test="withHat != null and withHat != ''" >
+				with_hat,
+			</if>
+			<if test="withCloth != null and withCloth != ''" >
+				with_cloth,
+			</if>
+			<if test="withMouse != null and withMouse != ''" >
+				with_mouse,
+			</if>
+			<if test="kitchenId != null and kitchenId != ''" >
+				kitchen_id,
+			</if>
+			<if test="cameraId != null and cameraId != ''" >
+				camera_id,
+			</if>
+			<if test="detectionTime != null and detectionTime != ''" >
+				detectiontime,
+			</if>
+			<if test="stut != null and stut != ''" >
+			  	stut,
+			</if>
+		</trim>
+	</sql>
+	<sql id="insertAllValue">
+		<trim suffixOverrides=",">
+			<if test="imageFile != null and imageFile != ''" >
+				#{imageFile},
+			</if>
+			<if test="withMask != null and withMask != ''" >
+				#{withMask},
+			</if>
+			<if test="withHat != null and withHat != ''" >
+				#{withHat},
+			</if>
+			<if test="withCloth != null and withCloth != ''" >
+				#{withCloth},
+			</if>
+			<if test="withMouse != null and withMouse != ''" >
+				#{withMouse},
+			</if>
+			<if test="kitchenId != null and kitchenId != ''" >
+				#{kitchenId},
+			</if>
+			<if test="cameraId != null and cameraId != ''" >
+				#{cameraId},
+			</if>
+			<if test="detectionTime != null and detectionTime != ''" >
+				#{detectionTime},
+			</if>
+			<if test="stut != null and stut != ''" >
+				#{stut},
+			</if>
+		</trim>
+	</sql>
+	<sql id="updateAllValue">
+		<trim suffixOverrides=",">
+			<if test="imageFile != null and imageFile != ''" >
+				image_file = #{imageFile,jdbcType=VARCHAR},
+			</if>
+			<if test="withMask != null and withMask != ''" >
+				with_mask = #{withMask,jdbcType=VARCHAR},
+			</if>
+			<if test="withHat != null and withHat != ''" >
+				with_hat = #{withHat,jdbcType=VARCHAR},
+			</if>
+			<if test="withCloth != null and withCloth != ''" >
+				with_cloth = #{withCloth,jdbcType=VARCHAR},
+			</if>
+			<if test="withMouse != null and withMouse != ''" >
+				with_mouse = #{withMouse,jdbcType=VARCHAR},
+			</if>
+			<if test="kitchenId != null and kitchenId != ''" >
+				kitchen_id = #{kitchenId,jdbcType=VARCHAR},
+			</if>
+			<if test="cameraId != null and cameraId != ''" >
+				camera_id = #{cameraId,jdbcType=VARCHAR},
+			</if>
+			<if test="detectionTime != null and detectionTime != ''" >
+				detectiontime = #{detectionTime,jdbcType=VARCHAR},
+			</if>
+			<if test="stut != null and stut != ''" >
+				stut = #{stut,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</sql>
+    <sql id="whereAllValue">
+        <where>
+            <if test='stut != null and stut != "" and stut != "c" ' >
+                AND d.stut = #{stut}
+            </if>
+			<if test='withMask != null and withMask != "" and withMask !="w" ' >
+				AND d.with_mask = #{withMask}
+			</if>
+			<if test='withHat != null and withHat != "" and withHat !="w" ' >
+				AND d.with_hat = #{withHat}
+			</if>
+			<if test='withCloth != null and withCloth != "" and withCloth !="w" ' >
+				AND d.with_cloth = #{withCloth}
+			</if>
+			<if test='withMouse != null and withMouse != "" and withMouse !="w" ' >
+				AND d.with_mouse = #{withMouse}
+			</if>
+			<if test="id != null and id != -1" >
+				AND d.id = #{id}
+			</if>
+			<if test="startTime != null and startTime != ''">
+				AND d.detectiontime &gt;= #{startTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				AND d.detectiontime &lt;= #{endTime}
+			</if>
+			ORDER BY
+			d.id DESC
+			<if test='end != null and end != -1'>
+				LIMIT #{start},#{end}
+			</if>
+        </where>
+    </sql>
+	<sql id="whereFullNameAllValue">
+		<where>
+			<if test='stut != null and stut != "" and stut != "c" ' >
+				AND d.stut = #{stut}
+			</if>
+			<if test='withMask != null and withMask != "" and withMask !="w" ' >
+				AND d.with_mask = #{withMask}
+			</if>
+			<if test='withHat != null and withHat != "" and withHat !="w" ' >
+				AND d.with_hat = #{withHat}
+			</if>
+			<if test='withCloth != null and withCloth != "" and withCloth !="w" ' >
+				AND d.with_cloth = #{withCloth}
+			</if>
+			<if test='withMouse != null and withMouse != "" and withMouse !="w" ' >
+				AND d.with_mouse = #{withMouse}
+			</if>
+			<if test="id != null and id != -1" >
+				AND d.id = #{id}
+			</if>
+			<if test="startTime != null and startTime != ''">
+				AND d.detectiontime &gt;= #{startTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				AND d.detectiontime &lt;= #{endTime}
+			</if>
+		</where>
+	</sql>
+	<!-- 查找所有食材记录条数 start -->
+	<select id="findDetectionTotal" resultType="java.lang.Integer">
+		SELECT
+			COUNT(d.id)
+		FROM
+		detection d
+		<include refid="whereAllValue"/>
+	</select>
+	<!-- 查找所有食材记录条数 end -->
+	<!-- 查找所有食材记录 start -->
+	<select id="findDetectionList" resultType="java.util.Map">
+		SELECT
+			<include refid="selectAllKey"/>
+		FROM
+		detection d
+		<include refid="whereAllValue"/>
+	</select>
+	<!-- 查找所有食材记录 end -->
+
+	<!-- 查找所有记录(打印用) 返回值是实体类 -->
+	<!--<select id="findManagementSystem" resultType="java.util.Map">
+		SELECT
+		<include refid="selectPrintAllKey"/>
+		FROM
+		managementsystem m
+		<include refid="whereAllValue"/>
+	</select>-->
+	<!-- 查找所有记录(打印用) 返回值是实体类 end -->
+
+	<!-- 查找单个 start -->
+	<select id="findDetection" resultType="java.util.Map">
+		SELECT
+		<include refid="selectAllKey"/>
+		FROM
+		detection d
+		<include refid="whereFullNameAllValue"/>
+	</select>
+	<!-- 查找单个 end -->
+
+	<select id="findDetectionFullNameTotal" resultType="java.lang.Integer">
+		SELECT
+			COUNT(id)
+		FROM
+		detection d
+		<include refid="whereFullNameAllValue"/>
+	</select>
+	<!-- 查找所有食材记录条数 end -->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		DELETE FROM detection
+        WHERE id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insertSelective" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO detection(<include refid="insertAllKey"/>) VALUES(<include refid="insertAllValue"/>);
+	</insert>
+	<update id="updateByPrimaryKey">
+		UPDATE detection
+		<set>
+			<include refid="updateAllValue"/>
+		</set>
+		WHERE id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

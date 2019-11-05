@@ -2,6 +2,9 @@ package cn.zhixiangsingle.dao.fromWallAlert;
 
 import cn.zhixiangsingle.entity.fromWall.fromWallAlert.dto.FromWallAlertDTO;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * All rights Reserved, Designed By www.zhixiangyun.net
  *
@@ -16,4 +19,8 @@ import cn.zhixiangsingle.entity.fromWall.fromWallAlert.dto.FromWallAlertDTO;
  */
 public interface FromWallAlertMapper {
     Integer insertSelective(FromWallAlertDTO fromWallAlertDTO);
+
+    Integer findFromWallAlertTotal(FromWallAlertDTO fromWallAlertDTO);
+
+    List<Map<String,Object>> findFromWallAlertList(FromWallAlertDTO fromWallAlertDTO);
 }

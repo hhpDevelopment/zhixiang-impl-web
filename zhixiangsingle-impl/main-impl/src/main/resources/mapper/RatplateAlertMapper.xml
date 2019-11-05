@@ -52,16 +52,16 @@
 				r.id,
 			</if>
 			<if test="ratplateArea != null and ratplateArea != ''" >
-				IFNULL(r.ratplate_area,null) ratplateArea,
+				r.ratplate_area ratplateArea,
 			</if>
 			<if test="ratplateSensor != null and ratplateSensor != ''" >
-				IFNULL(r.ratplate_sensor,null) ratplateSensor,
+				r.ratplate_sensor ratplateSensor,
 			</if>
 			<if test="ratplateStartTime != null and ratplateStartTime != ''" >
-				IFNULL(r.ratplate_starttime,null) ratplateStartTime,
+				r.ratplate_starttime, ratplateStartTime,
 			</if>
 			<if test="ratplateEndTime != null and ratplateEndTime != ''" >
-				IFNULL(r.ratplate_endtime,null) ratplateEndTime,
+				r.ratplate_endtime, ratplateEndTime,
 			</if>
 			<if test="ratplateStatus != null and ratplateStatus != ''" >
 				r.ratplate_status ratplateStatus,
